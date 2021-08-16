@@ -1,0 +1,441 @@
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap);
+@font-face {
+  font-family: Verdana;
+  src: url(../font/Verdana.ttf);
+}
+@font-face {
+  font-family: Dotum;
+  src: url(../font/dotum.ttc);
+}
+@font-face {
+  font-family: AppleGothic;
+  src: url(../font/applegothic.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+}
+
+p, button, a, h1, h2, h3, h4, h5, h6, tr, span, li, div, input, textarea, select, caption, table th, table td, span {
+  font-family: "Noto Sans KR", sans-serif;
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+img {
+  vertical-align: top;
+}
+
+.container {
+  min-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+main {
+  background-color: #fff;
+}
+main #header .container {
+  border-bottom: 1px solid #d8d8d8;
+}
+main #header .container .head_inner .header .top_menu ul li a {
+  color: #1a1a1a;
+}
+
+.con_top_banner {
+  margin: 0 auto;
+  height: 225px;
+  width: 1280px;
+}
+.con_top_banner .container .inner img {
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.contents {
+  margin: 0 auto;
+  width: 1280px;
+}
+.contents .side_left {
+  width: 210px;
+  float: left;
+  margin: 0 20px 0 0;
+}
+.contents .side_left .side_tit a {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3a3a3a;
+  padding-bottom: 15px;
+  line-height: 24px;
+  border-bottom: 1px solid #1a1a1a;
+}
+.contents .side_left .side_con > ul {
+  margin: 30px 0;
+}
+.contents .side_left .side_con > ul > li {
+  display: block;
+  font-size: 16px;
+  position: relative;
+}
+.contents .side_left .side_con > ul > li a {
+  font-weight: 400;
+  color: #3a3a3a;
+  line-height: 40px;
+}
+.contents .side_left .side_con > ul > li a::after {
+  content: "";
+  display: none;
+  width: 5px;
+  height: 5px;
+  background-color: #ff3d44;
+  border-radius: 50%;
+  margin-left: 3px;
+  transition: all 3s;
+}
+.contents .side_left .side_con > ul > li .sub_arrow {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  background: url(../img/icon_arrowdown.png) no-repeat 98% center;
+}
+.contents .side_left .side_con > ul > li .innerul {
+  padding: 10px 10px 20px;
+  margin: 0;
+  display: none;
+}
+.contents .side_left .side_con > ul > li .innerul > li {
+  transition: 0.3s ease-in-out;
+}
+.contents .side_left .side_con > ul > li .innerul > li a {
+  display: block;
+  padding: 8px 0;
+  height: 36px;
+  line-height: 20px;
+  font-size: 16px;
+  color: #8a8a8a;
+}
+.contents .side_left .side_con > ul > li .innerul > li a::after {
+  content: "";
+  display: none;
+  width: 5px;
+  height: 5px;
+  background-color: #ff3d44;
+  border-radius: 50%;
+  margin-left: 3px;
+  transition: all 3s;
+}
+.contents .side_left .side_con > ul > li .innerul > li:hover a {
+  color: #000;
+}
+.contents .side_left .side_con > ul > li .innerul > li:hover a::after {
+  display: inline-block;
+}
+.contents .side_left .side_con > ul > li.on a::after {
+  display: inline-block;
+}
+.contents .side_right {
+  float: right;
+  max-width: 960px;
+}
+.contents .side_right .top_sec {
+  height: 40px;
+  margin: 0 15px 40px;
+}
+.contents .side_right .top_sec .filter {
+  float: left;
+  position: relative;
+}
+.contents .side_right .top_sec .filter a {
+  color: #3a3a3a;
+  display: block;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  width: 130px;
+  padding: 0 15px;
+  height: 38px;
+  font-size: 16px;
+  line-height: 36px;
+  background: #fff url(../img/icon_searchfilter_off.png) 88% center no-repeat;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.contents .side_right .top_sec .filter .off {
+  color: #ff3d45;
+  border: 1px solid #ff3d45;
+  background: #fff url(../img/icon_searchfilter_on.png) 88% center no-repeat;
+}
+.contents .side_right .top_sec .list {
+  float: right;
+  position: relative;
+  height: 40px;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 130px;
+  border: 1px solid #e5e5e5;
+}
+.contents .side_right .top_sec .list ul {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 130px;
+}
+.contents .side_right .top_sec .list ul li {
+  padding: 0 14px;
+  opacity: 1;
+}
+.contents .side_right .top_sec .list ul li a {
+  font-size: 16px;
+  color: #3a3a3a;
+  font-weight: 400px !important;
+  display: block;
+  padding: 7px 0;
+}
+.contents .side_right .top_sec .list ul li:nth-of-type(1) {
+  background: url(../img/icon_arrowdown.png) no-repeat 98% center;
+  background-position: right 10px center;
+}
+.contents .side_right .top_sec .list ul li:hover {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+}
+.contents .side_right .top_sec .list.on {
+  overflow: visible;
+  height: auto;
+}
+.contents .side_right .filter_option {
+  margin: 0 15px;
+  position: relative;
+  display: none;
+  padding-bottom: 40px;
+}
+.contents .side_right .filter_option table {
+  width: 100%;
+  border-top: 1px solid #1a1a1a;
+}
+.contents .side_right .filter_option table tr th {
+  width: 160px;
+  padding: 25px 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 16px;
+  color: #3a3a3a;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.contents .side_right .filter_option table tr td {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 0;
+  width: auto;
+}
+.contents .side_right .filter_option table tr td ul li {
+  display: inline-block;
+  width: 14%;
+  margin: 5px 0;
+}
+.contents .side_right .filter_option table tr td ul li input {
+  background: url(../img/join_input_off.gif) no-repeat;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  vertical-align: middle;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+.contents .side_right .filter_option table tr td ul li a {
+  display: inline-block;
+  height: 20px;
+  padding: 0 10px;
+  line-height: 20px;
+  color: #707070;
+  cursor: pointer;
+  font-size: 15px;
+  vertical-align: top;
+}
+.contents .side_right .filter_option table tr td ul li a span {
+  display: none;
+}
+.contents .side_right .filter_option table tr td ul li.on input {
+  background: url(../img/join_input_on.gif) no-repeat;
+}
+.contents .side_right .filter_select {
+  padding: 20px 0 40px 110px;
+  position: relative;
+  transition: 1s;
+  visibility: hidden;
+  display: none;
+}
+.contents .side_right .filter_select #reset {
+  color: #3a3a3a;
+  background: url(../img/icon_searchfilter.png) no-repeat center left;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 0 0 20px;
+  border: none;
+  position: absolute;
+  left: 15px;
+  top: 32px;
+}
+.contents .side_right .filter_select .select_list {
+  display: inline-block;
+}
+.contents .side_right .filter_select .select_list li {
+  display: inline-block;
+  line-height: 1;
+  margin: 5px 0 5px 10px;
+  padding: 10px 5px 10px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  vertical-align: top;
+  font-size: 14px;
+  color: #3a3a3a;
+  background: #f6f6f6;
+}
+.contents .side_right .filter_select .select_list li .select_del {
+  width: 22px;
+  height: 22px;
+  margin: -5px 0;
+  outline: none;
+  vertical-align: middle;
+  background: url(../img/btn_search_delete2.gif) no-repeat center center;
+  border: none;
+}
+.contents .side_right .filter_select.on {
+  visibility: visible;
+  display: block;
+}
+.contents .side_right .box ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.contents .side_right .box ul li {
+  width: 33.3333%;
+  margin: 0 0 60px;
+}
+.contents .side_right .box ul li .box_inner {
+  margin: 0 auto;
+  width: 300px;
+}
+.contents .side_right .box ul li .box_inner .img_sec {
+  position: relative;
+  width: 300px;
+}
+.contents .side_right .box ul li .box_inner .img_sec img {
+  background-color: #f5f5f5;
+  border-radius: 20px;
+}
+.contents .side_right .box ul li .box_inner .img_sec > span {
+  background-image: url("../img/icon_202012111853517100.png");
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 38px;
+  height: 38px;
+  z-index: 1;
+}
+.contents .side_right .box ul li .box_inner .tit_sec {
+  padding: 25px 5px;
+  margin: 0 auto;
+}
+.contents .side_right .box ul li .box_inner .tit_sec > span {
+  font-size: 16px;
+  color: #6a6a6a;
+  margin-bottom: 10px;
+  display: block;
+}
+.contents .side_right .box ul li .box_inner .tit_sec .sub_sec .hash {
+  font-size: 12px;
+  color: #999999;
+  margin-bottom: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 18px;
+  display: block;
+  line-height: 18px;
+  display: block;
+}
+.contents .side_right .box ul li .box_inner .tit_sec .sub_sec .discount {
+  font-size: 18px;
+  font-weight: 500;
+  color: #3a3a3a;
+  margin: 15px 3px 3px 0;
+  display: inline-block;
+}
+.contents .side_right .box ul li .box_inner .tit_sec .sub_sec .origin_price {
+  font-size: 13px;
+  font-weight: 400;
+  color: #999;
+  margin: 15px 3px 3px 0;
+  display: inline-block;
+}
+.contents .side_right .box ul li .box_inner .tit_sec .sub_sec .per {
+  color: #ff3d44;
+  padding: 0 0 3px 3px;
+  display: inline-block;
+  font-size: 18px;
+}
+.contents .side_right .box ul li .box_inner .img_sec:hover img {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.contents .side_right .page {
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+}
+.contents .side_right .page a img {
+  opacity: 0.6;
+}
+.contents .side_right .page ul {
+  margin: 0 20px;
+  display: flex;
+}
+.contents .side_right .page ul li {
+  text-align: center;
+  margin: 0 5px;
+  font-size: 16px;
+  line-height: 32px;
+  color: #5a5a5a;
+  font-family: "Poppins", sans-serif;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  font-weight: 400;
+}
+.contents .side_right .page ul li.active {
+  background-color: #ff3d44;
+  color: #fff;
+}
+
+.contents::after {
+  content: "";
+  display: block;
+  clear: both;
+}/*# sourceMappingURL=sub.css.map */

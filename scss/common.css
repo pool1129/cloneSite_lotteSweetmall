@@ -1,0 +1,52 @@
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap);
+@font-face {
+  font-family: Verdana;
+  src: url(../font/Verdana.ttf);
+}
+@font-face {
+  font-family: Dotum;
+  src: url(../font/dotum.ttc);
+}
+@font-face {
+  font-family: AppleGothic;
+  src: url(../font/applegothic.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+}
+
+p, button, a, h1, h2, h3, h4, h5, h6, tr, span, li, div, input, textarea, select, caption, table th, table td, span {
+  font-family: "Noto Sans KR", sans-serif;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+ul, li {
+  list-style: none;
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+img {
+  vertical-align: top;
+}
+
+.container {
+  min-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}/*# sourceMappingURL=common.css.map */

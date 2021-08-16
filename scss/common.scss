@@ -1,0 +1,35 @@
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap);
+@font-face{ font-family: Verdana; src:url(../font/Verdana.ttf);}
+@font-face{ font-family: Dotum; src:url(../font/dotum.ttc);}
+@font-face{ font-family: AppleGothic; src:url(../font/applegothic.ttf);}
+
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body{width: 100%;}
+p, button, a, h1, h2, h3, h4, h5, h6, tr, span, li, div, input, textarea, select, caption, table th, table td, span{font-family: 'Noto Sans KR', sans-serif; text-decoration: none; color: #1a1a1a;}
+
+ul, li{list-style: none; text-decoration: none; color: #1a1a1a;}
+img{vertical-align: top;}
+
+.container{min-width: 1280px; width: 100%; margin: 0 auto; overflow: hidden;}
+.inner{max-width: 1280px; margin: 0 auto; width: 100%;}
+
+@mixin flex($justify) {display: flex; justify-content: $justify; align-items: center;}
+@mixin line_effect($width , $line) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: $width + '%';
+    display: inline-block;
+    white-space: normal;
+    text-align: left;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    -webkit-box-orient: vertical;
+}
+@mixin tran5 {top: 50%; left: 50%; transform: translate(-50%,-50%);}
+
+@mixin h2{font-size: 50px; font-weight: 700; display: inline-block;}
+@mixin point{display:inline-block; width: 10px; height: 10px; background-color: #ff3d44; border-radius: 50%; margin: 0 0 -5px 5px;}
+@mixin p {font-size: 17px; font-weight: 400; color: #9a9a9a; margin-bottom: 10px;}
+
