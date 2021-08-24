@@ -9,6 +9,29 @@
     }
 }
 
+@keyframes headerfade{
+    0%{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sidebar{
+    0%{
+        transform: translate3d(-0px,0,0);
+    }
+    50%{
+        transform: translate3d(-10px,0,0);
+    }
+    100%{
+        transform: translate3d(-0px,0,0);
+    }
+}
+
 @keyframes fadeDown{
     0%{
         opacity: 0;

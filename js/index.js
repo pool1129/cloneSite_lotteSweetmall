@@ -1,23 +1,52 @@
-//TODO : 헤더영역
-window.addEventListener('scroll',function(){
-    
-    const Y = Math.round(window.scrollY);
-
-    const headBg = document.querySelector('.head_inner');
-    const fix = document.querySelector('#header > .container');
-    const logo = document.querySelector('.member > .logo');
-
-    if(Y >= 80){
-        headBg.classList.add('active');
-        fix.classList.add('fixed');
-        logo.classList.add('active');
+// TODO : 헤더영역
+function scroll(){
+    window.addEventListener('scroll',function(){
         
-    }else{
-        headBg.classList.remove('active');
-        fix.classList.remove('fixed');
-        logo.classList.remove('active');
-    }
-});
+        const Y = Math.round(window.scrollY);
+
+        const headBg = document.querySelector('.head_inner');
+        const fix = document.querySelector('#header > .container');
+        const logo = document.querySelector('.member > .logo');
+        const hsub = document.querySelectorAll('.top_menu .sub');
+
+        if(Y >= 80){
+            headBg.classList.add('active');
+            fix.classList.add('fixed');
+            logo.classList.add('active');
+
+            hsub[0].style.top = '120px';
+            hsub[1].style.top = '120px';
+            hsub[4].style.top = '120px';
+
+            hsub[2].style.top = '120px';
+            hsub[3].style.top = '120px';
+            hsub[5].style.top = '120px';
+            
+        }else{
+            headBg.classList.remove('active');
+            fix.classList.remove('fixed');
+            logo.classList.remove('active');
+
+            hsub[0].style.top = '210px';
+            hsub[1].style.top = '210px';
+            hsub[4].style.top = '210px';
+        
+            hsub[2].style.top = '120px';
+            hsub[3].style.top = '120px';
+            hsub[5].style.top = '120px';
+        }
+    });
+}
+
+scroll();
+
+// TODO : 상단배너 닫기
+const bannerbtn = document.querySelector('.top_banner .btn'),
+      banner = document.querySelector('.top_banner');
+
+      bannerbtn.addEventListener('click',function(){
+        banner.style.display = 'none';
+      });
 
 // TODO : 사이드메뉴
 function side(){
@@ -30,6 +59,100 @@ function side(){
 }
 
 side();
+
+const newlist = document.querySelector('.newlist_img ul'),
+      ranklist = document.querySelector('.ranklist_img ul');
+
+function sidehtml(s,w){
+
+    w.style.width = `${s.length*100+100}px`;
+
+    for(let i=0; i<s.length; i++){
+        w.innerHTML +=   `<li>
+                            <img src="${s[i].img}" alt="">
+                          </li>`
+    }
+}
+
+sidehtml(newImg,newlist);
+sidehtml(rank,ranklist);
+
+
+const newitem = document.querySelectorAll('.newlist_img ul li'),
+      newstatus = document.querySelector('.newlist_status > .status'),
+      newfirst = newlist.firstElementChild.cloneNode(true);
+
+const rankitem = document.querySelectorAll('.ranklist_img ul li'),
+      rankstatus = document.querySelector('.ranklist_status > .status'),
+      rankfirst = ranklist.firstElementChild.cloneNode(true);
+
+      newlist.appendChild(newfirst);
+      ranklist.appendChild(rankfirst);
+
+function sideSlide(){
+
+    var idx = 0;
+    var num = 0;
+
+    setInterval(function(){
+        let width = 100 * idx;
+        let n = 120 / newitem.length;
+        let r = 120 / rankitem.length;
+
+        newstatus.style.width = `${n}px`;
+        rankstatus.style.width = `${r}px`;
+
+        for(let i=0; i<newitem.length; i++){
+            newitem[i].style.transform = `translateX(-${width}%)`;
+            newstatus.style.transform = `translateX(${width}%)`
+        }
+
+        for(let j=0; j<rankitem.length; j++){
+            rankitem[j].style.transform = `translateX(-${width}%)`;
+            rankstatus.style.transform = `translateX(${width}%)`
+        }
+
+        idx++;
+    },3000);
+}
+
+// sideSlide();
+
+function side_move(p,s){
+    var index = 0;
+    var width = 120 / p.length;
+
+    s.style.width = `${width}px`;
+
+    setInterval(function(){
+        const minus = 100 * (index+1);
+
+        for(let i=0; i<p.length; i++){
+            p[i].style.transition = "0.3s";
+            p[i].style.transform = `translateX(-${minus}%)`;
+            s.style.transform = `translateX(${minus}%)`;
+        }
+
+        index++;
+
+        if(index === p.length){
+            setTimeout(function(){
+
+                for(let j=0; j<p.length; j++){
+                    p[j].style.transition = "0s";
+                    p[j].style.transform = `translateX(0%)`;
+                    s.style.transform = `translateX(0%)`;
+                }
+
+            },000);
+
+            index = 0;
+        }
+    },3000);
+}
+
+side_move(newitem,newstatus);
+side_move(rankitem,rankstatus);
 
 // TODO : 왼쪽 플로팅 메뉴
 function float(){
@@ -49,6 +172,29 @@ function float(){
 }
 
 float();
+
+//TODO : 선택영역 탭 메뉴
+function selectMenu(){
+    const list = document.querySelectorAll('.choose .tab_con .hash'),
+          tabbtn = document.querySelectorAll('.choose .tab_btn > ul >li'),
+          tab = document.querySelectorAll('.choose .tab_con > ul > li');
+
+    console.log(tabbtn.length);
+
+    for(let i=0; i<3; i++){
+        list[i].addEventListener('click',function(){
+            for(let j=0; j<3; j++){
+                tab[j].classList.remove('active');
+                tabbtn[j].classList.remove('on');
+            }
+
+            tab[i+1].classList.add('active');
+            tabbtn[i+1].classList.add('on');
+        })
+    }
+}  
+
+selectMenu();
 
 // TODO : 레이어 팝업 + 쿠키 설정
 const today = document.querySelector('.main_popup a'),
@@ -94,12 +240,76 @@ for(let i=0; i<headUl.length; i++){
         logo.classList.add('active');
     });
     
-    headUl[i].addEventListener('mouseleave',function(){
+    headUl[i].addEventListener('mouseout',function(){
         head.classList.remove('active');
         logo.classList.remove('active');
-
     });
 }
+
+function submenu(){
+    const li = document.querySelectorAll('.top_menu > ul > li'),
+          head = document.querySelector('.head_inner'),
+          sub = document.querySelectorAll('.top_menu .sub');
+
+    for(let i = 0; i<li.length; i++){
+        li[i].addEventListener('mouseover',function(){
+            if(i === 0){
+                head.classList.add('over');
+                sub[0].classList.add('on');
+            }else if(i === 1){
+                head.classList.add('over1');
+                sub[1].classList.add('on');
+            }else if(i === 2){
+                sub[2].classList.add('on');
+            }else if(i === 3){
+                sub[3].classList.add('on');
+            }else if(i === 4){
+                head.classList.add('over2');
+                sub[4].classList.add('on');
+            }else{
+                sub[5].classList.add('on');
+            }
+        });
+
+        li[i].addEventListener('mouseout',function(){
+            if(i === 0){
+                head.classList.remove('over');
+                sub[0].classList.remove('on');
+            }else if(i === 1){
+                head.classList.remove('over1');
+                sub[1].classList.remove('on');
+            }else if(i === 2){
+                sub[2].classList.remove('on');
+            }else if(i === 3){
+                sub[3].classList.remove('on');
+            }else if(i === 4){
+                head.classList.remove('over2');
+                sub[4].classList.remove('on');
+            }else{
+                sub[5].classList.remove('on');
+            }
+        });
+    }
+}
+
+submenu();
+
+function eventsub(){
+    const li = document.querySelectorAll('.sub .box ul li');
+    const subli = document.querySelectorAll('.sub > .box > ul > li > ul');
+
+    for(let i=0; i<li.length; i++){
+        li[i].addEventListener('mouseover',function(){
+            li[i].classList.add('on');
+        });
+
+        li[i].addEventListener('mouseout',function(){
+            li[i].classList.remove('on');
+        });
+    }
+}
+
+eventsub();
 
 // FIXME : 스크롤 이벤트
 window.addEventListener('scroll',function(){
@@ -207,17 +417,17 @@ const tabBtn = document.querySelectorAll('.tab_btn > ul li'),
 
 //TODO : 지금 신상 슬라이드영역
 function newhtml(){
-    const main = document.querySelector('#new .main_item');
+    const ul = document.querySelector('#new .main_item > ul');
 
     for(let i =0; i<newImg.length; i++){
 
-        var item = document.createElement('div');
+        var li = document.createElement('li');
     
-        item.classList.add('item');
+        li.classList.add('swiper-slide');
     
-        main.appendChild(item);
+        ul.appendChild(li);
         
-        item.innerHTML = `
+        li.innerHTML = `
                             <div class="over">
                                 <img src="${newImg[i].img}" alt="">
                             </div>
@@ -449,6 +659,7 @@ function special(){
         var img = document.createElement('div');
         var text = document.createElement('div');
 
+        li.classList.add('swiper-slide');
         img.classList.add('img');
         text.classList.add('text');
 
@@ -474,12 +685,14 @@ function tvhtml(){
         var li = document.createElement('li');
         var txtli = document.createElement('li');
 
+        li.classList.add('swiper-slide');
+
         txt.appendChild(txtli);
         tv.appendChild(li);
 
         li.innerHTML = `<img src="${tvImg[i].img}" alt="">
                         <span class="btn">
-                            <img src="img/video_btn.png" alt="">
+                            <img src="img/video_btn.png" alt="" class="tvConImg">
                         </span>`;
 
         txtli.innerHTML = `<p>
@@ -495,7 +708,7 @@ tvhtml();
 // TODO : 레시피 영역
 function recipehtml(){
 
-    const recipe = document.querySelector('.recipe .con .slider_inner'),
+    const recipe = document.querySelector('.recipe .con ul'),
           txt = document.querySelector('.recipe .slide ul');
 
 
@@ -505,7 +718,7 @@ function recipehtml(){
 
         txt.appendChild(txtli);
         recipe.appendChild(li);
-        li.classList.add('slider_item');
+        li.classList.add('swiper-slide');
 
         li.innerHTML = `<img src="${recipeImg[i].img}" alt="">`
 
@@ -621,7 +834,7 @@ recipehtml();
 
 //TODO : TV 슬라이드영역
 
-    function tv(){
+function tv(){
 
     const img = document.querySelectorAll('.tv .con ul li'),
           statusBtn = document.querySelectorAll('.tv .con .status img'),
@@ -692,6 +905,7 @@ recipehtml();
                 }
                 statusBtn[idx].classList.add('active');
 
+                //배경 슬라이드
                 if(idx == 0){
                     bg_style.innerHTML = ".container::before {left:-55% !important}";
                 }else if(idx == 1){
@@ -854,130 +1068,144 @@ $('.brandslider').slick({
 
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//TODO : 메인 슬라이드 영역
-// transform: translateX(-100%);
-// const rightBtn = document.querySelector('.arrow_right'),
-//       leftBtn = document.querySelector('.arrow_left'),
-//       mainImg = document.querySelectorAll('.main .slide_box ul li'),
-//       mainStatus = document.querySelectorAll('.main .status img');
-
-    //   console.log(mainImg.length); //12
-
-//     var right = 0;
-//     var left = 0;
-
-// mainStatus[0].classList.add('active');
-// mainImg[0].classList.add('active');
-
-// rightBtn.addEventListener('click',function(){
-//     console.log('right');
-//     right++;
-
-//     const plus = -100 * right;
-//     // console.log(plus);
-
-//     for(let i=0; i<mainStatus.length; i++){
-//         mainStatus[i].classList.remove('active');
-//         // mainImg[i].classList.remove('active');
-//     };
-
-//     mainStatus[right].classList.add('active');
-//     mainImg[right].classList.add('active');
-    
-//     for(let k=0; k<mainImg.length; k++){
-//         mainImg[k].style.transform = `translateX(${plus}%)`;
-//     }
-// });
-
-// leftBtn.addEventListener('click',function(){
-//     // console.log('left');
-//     right--;
-
-//     console.log(right);
-
-//     const minus = -100 * right;
-//     // console.log(minus);
-
-//     for(let i=0; i<mainStatus.length; i++){
-//         mainStatus[i].classList.remove('active');
-//         mainImg[i].classList.remove('active');
-//     };
-
-//     mainStatus[right].classList.add('active');
-//     mainImg[right].classList.add('active');
-    
-//     for(let k=0; k<mainImg.length; k++){
-//             mainImg[k].style.transform = `translateX(${minus}%)`;
-//     }
-// });
-
-// function main(){
-//     const ul = document.querySelector('.slide_box > ul'),
-//           li = document.querySelectorAll('.slide_box > ul > li'),
-//           first = ul.firstElementChild.cloneNode(true);
-//           // h4 = document.querySelectorAll('.slide_wrap li h4');
-
-//         ul.appendChild(first);
-
-//     function move_main(){
-//         var index = 0;
-
-//         setInterval(function(){
-//             const minus = -100 * (index+1);
-
-//             for(let i=0; i<li.length; i++){
-//                 li[i].style.transition = "0.2s";
-//                 li[i].style.transform = `translateX(${minus}%)`;
-//             }
-
-//             index++;
-
-//             if(index === 5){
-//                 setTimeout(function(){
-
-//                     for(let j=0; j<li.length; j++){
-//                         li[j].style.transition = "0s";
-//                         li[j].style.transform = `translateX(0%)`;
-//                     }
-
-//                 },201);
-
-//                 index = 0;
-//             }
-//         },3000);
-//     }
-
-//     move_main();
-// }
-    
-
 document.addEventListener("DOMContentLoaded",function(){
-    move();
-    newSlide();
-    recipe();
-    tv();
+    // move();
+    // newSlide();
+    // recipe();
+    // tv();
+});
+
+// TODO : 지금 신상 슬라이드 영역 swiper
+var swiper = new Swiper(".newSwiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 25,
+    freeMode: true,
+    autoplay : { 
+        disableOnInteraction : false,
+    },
+    on: {
+        slideChange: function () {
+            const newScroll = document.querySelector('#new .new_scroll');
+
+            // if(this.realIndex == 2){
+            //     newScroll.style.transform = `translateX(${100}%)`;
+            // }else if(this.realIndex == 4){
+            //     newScroll.style.transform = `translateX(${200}%)`;
+            // }else if(this.realIndex == 6){
+            //     newScroll.style.transform = `translateX(${300}%)`;
+            // }else if(this.realIndex == 8){
+            //     newScroll.style.transform = `translateX(${400}%)`;
+            // }
+            // else if(this.realIndex == 0){
+            //     newScroll.style.transform = `translateX(0%)`;
+            // }
+        }
+    }
+  });
+
+
+// TODO : 캐릭터 슬라이드 영역 swiper
+var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 4.5,
+    spaceBetween: 25,
+    centeredSlides: true,
+    autoplay : { 
+        disableOnInteraction : false,
+    },
+    on: {
+        slideChange: function () {
+            const speScroll = document.querySelector('.goods .scroll_bar_status');
+
+            if(this.realIndex == 4){
+                speScroll.style.transform = `translateX(${100}%)`;
+            }else if(this.realIndex == 8){
+                speScroll.style.transform = `translateX(${200}%)`;
+            }else if(this.realIndex == 12){
+                speScroll.style.transform = `translateX(${300}%)`;
+            }else if(this.realIndex == 0){
+                speScroll.style.transform = `translateX(0%)`;
+            }
+        }
+    }
 });
 
 
+// TODO : TV 영역 슬라이드 swiper
+var swiper = new Swiper(".tvSwiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 60,
+    centeredSlides: false,
+    autoplay : { 
+        disableOnInteraction : false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable : true,
+    },
+    loop : true,
+    loopAdditionalSlides : 1, 
+    on: {
+        slideChange: function () {
+            const text = document.querySelectorAll('.tv .slide > ul > li');
+            const bg = document.querySelector('.tv > .container');
 
+                  var bg_style = document.createElement('style');
+                  bg.appendChild(bg_style);
 
+            for(let i=0; i<text.length; i++){
+                text[i].classList.remove('active');
+            }
+            text[this.realIndex].classList.add('active');
+
+            if(this.realIndex == 0){
+                bg_style.innerHTML = ".container::before {left:-55% !important}";
+            }else if(this.realIndex == 1){
+                bg_style.innerHTML = ".container::before {left:-35% !important}";
+            }else if(this.realIndex == 2){
+                bg_style.innerHTML = ".container::before {left:-15% !important}";
+            }else if(this.realIndex >= 3){
+                bg_style.innerHTML = ".container::before {left:0% !important}";
+            }
+        }
+    }
+});
+
+// TODO : 레시피 영역 swiper
+var swiper = new Swiper(".recipeSwiper", {
+    slidesPerView: 'auto',
+    spaceBetween: 60,
+    centeredSlides: false,
+    autoplay : { 
+        disableOnInteraction : false,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable : true,
+    },
+    loop : true,
+    loopAdditionalSlides : 1, 
+    on: {
+        slideChange: function () {
+            const text = document.querySelectorAll('.recipe .slide ul li');
+            const bg = document.querySelector('.recipe > .container');
+
+                  var bg_style = document.createElement('style');
+                  bg.appendChild(bg_style);
+
+            for(let i=0; i<text.length; i++){
+                text[i].classList.remove('active');
+            }
+            text[this.realIndex].classList.add('active');
+
+            if(this.realIndex == 0){
+                bg_style.innerHTML = ".container::before {right:-55% !important}";
+            }else if(this.realIndex == 1){
+                bg_style.innerHTML = ".container::before {right:-35% !important}";
+            }else if(this.realIndex == 2){
+                bg_style.innerHTML = ".container::before {right:-15% !important}";
+            }else if(this.realIndex >= 3){
+                bg_style.innerHTML = ".container::before {right:0% !important}";
+            }
+        }
+    }
+});
