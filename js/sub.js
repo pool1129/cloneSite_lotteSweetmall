@@ -380,10 +380,11 @@ $('.filter > a').on('click',function(){
         $(this).removeClass('off');
         $(this).html('필터열기');
         $('.filter_option').stop().slideUp();
+        // $('.filter_select').removeClass('on');
     }
     else{
         $(this).addClass('off');
-        $(this).html('필터닫기')
+        $(this).html('필터닫기');
         $('.filter_option').stop().slideDown();
     }
 });
@@ -408,6 +409,8 @@ for(let i=0; i<option.length; i++){
 
         option[i].classList.toggle('on');
         sel_box.classList.add('on');
+
+        console.log(sel_option.childElementCount -1);
 
         if(option[i].classList.contains('on')){ //만약 선택하면
             arr.push(text); //arr배열에 txt 넣기
@@ -436,6 +439,10 @@ for(let i=0; i<option.length; i++){
         // console.log(arr);
 
         del();
+
+        if(sel_option.childElementCount == 0){
+            sel_box.classList.remove('on');
+        }
 
         const set = new Set(arr);
         const uniqueArr = [...set];
@@ -479,13 +486,13 @@ reset();
 function del(){
 
     const sel_option_text = document.querySelectorAll('.select_list > li > a'),
-          sel_option_btn = document.querySelectorAll('.select_del'),
-          sel_option_list = document.querySelectorAll('.select_list > li');
+            sel_option_btn = document.querySelectorAll('.select_del'),
+            sel_option_list = document.querySelectorAll('.select_list > li');
 
-
-
-    for(let i=0; i<sel_option_btn.length; i++){
-        sel_option_btn[i].addEventListener('click',function(){
+    for(let i=0; i<arr2.length; i++){
+        sel_option_btn[i].onclick = function(e){
+            e.preventDefault();
+           
             // sel_option_list[i].remove(); //클릭한 arr i번째 지우고 
 
             // console.log(option[arr2[i]]);
@@ -506,16 +513,63 @@ function del(){
     
                     arr.splice(k,1);
                     arr2.splice(k,1);
+
+                    localStorage.flter = arr;
                     index--;
                 }
             }
+            del();
 
             console.log(arr2);
             console.log(arr);
             console.log(sel_option_btn.length);
-        });
+        };
     }
 }
+
+function mainSub(){ //메인페이지 선택영역에서 넘어온 친구들 
+    if(!localStorage.mainindex == ""){
+        const filter = document.querySelector('.filter > a'),
+            select = document.querySelector('.filter_select'),
+            option = document.querySelector('.filter_option'),
+            sel_option = document.querySelector('.select_list'),
+            optionLi = document.querySelectorAll('.filter_option ul li');
+
+        filter.classList.add('off');
+        filter.innerHTML = '필터닫기';
+        select.classList.add('on');
+        option.style.display = 'block';
+
+        const data = JSON.parse(localStorage.getItem('main'));
+        const index = JSON.parse(localStorage.getItem('mainindex'));
+
+        // li넣기
+        for(let i=0; i<data.length; i++){
+            var li = document.createElement('li');
+            var btn = document.createElement('button');
+            var text = document.createElement('a');
+
+            sel_option.appendChild(li);
+            li.appendChild(text);
+            li.appendChild(btn);
+
+            btn.classList.add('select_del');
+    
+            text.innerHTML = data[i]; //arr배열의 1,2,3,4~을 text의 값에 넣어줌
+        }
+
+        // checkbox 불키기
+        for(let j=0; j<index.length; j++){
+            // console.log(index[j]);
+
+            // console.log(optionLi[index[j]]);
+
+            optionLi[index[j]].classList.add('on');
+        }
+    }
+}
+
+mainSub();
 
 // TODO : 페이지 넘기기
 function page(){

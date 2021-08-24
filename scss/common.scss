@@ -4,7 +4,17 @@
 @font-face{ font-family: Dotum; src:url(../font/dotum.ttc);}
 @font-face{ font-family: AppleGothic; src:url(../font/applegothic.ttf);}
 
-*{margin: 0; padding: 0; box-sizing: border-box;}
+*{
+    margin: 0; padding: 0; 
+    box-sizing: border-box;
+
+    // 드래그방지
+    -ms-user-select: none; 
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
 body{width: 100%;}
 p, button, a, h1, h2, h3, h4, h5, h6, tr, span, li, div, input, textarea, select, caption, table th, table td, span{font-family: 'Noto Sans KR', sans-serif; text-decoration: none; color: #1a1a1a;}
 

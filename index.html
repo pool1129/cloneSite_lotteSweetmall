@@ -464,6 +464,7 @@
 
     <!-- 지금 신상 영역 -->
     <article id="new">
+        <div class="bg"></div>
         <div class="container">
             <div class="inner">
                 <div class="new_pro">
@@ -665,12 +666,12 @@
                                 <p>어떤 맛을 좋아하세요?</p>
                                 <div class="hash">
                                     <ul>
-                                        <li>달콤한맛</li>
-                                        <li>고소한맛</li>
-                                        <li>상쾌한맛</li>
-                                        <li>담백한맛</li>
-                                        <li>매콤한맛</li>
-                                        <li>상큼한맛</li>
+                                        <li><span>맛:</span>달콤한맛</li>
+                                        <li><span>맛:</span>고소한맛</li>
+                                        <li><span>맛:</span>상쾌한맛</li>
+                                        <li><span>맛:</span>담백한맛</li>
+                                        <li><span>맛:</span>매콤한맛</li>
+                                        <li><span>맛:</span>상큼한맛</li>
                                     </ul>
                                 </div>
                             </li>
@@ -679,12 +680,12 @@
                                 <p>선호하는 원료를 선택해 주세요.</p>
                                 <div class="hash">
                                     <ul>
-                                        <li>곡물</li>
-                                        <li>초콜릿</li>
-                                        <li>과일</li>
-                                        <li>크림</li>
-                                        <li>치즈</li>
-                                        <li>기타</li>
+                                        <li><span>원료:</span>곡물</li>
+                                        <li><span>원료:</span>초콜릿</li>
+                                        <li><span>원료:</span>과일</li>
+                                        <li><span>원료:</span>크림</li>
+                                        <li><span>원료:</span>치즈</li>
+                                        <li><span>원료:</span>기타</li>
                                     </ul>
                                 </div>
                             </li>
@@ -693,13 +694,13 @@
                                 <p>어떤 식감을 좋아하세요?</p>
                                 <div class="hash" onclick='location.href="sub1.html"''>
                                     <ul>
-                                        <li>딱딱함</li>
-                                        <li>쫀득함</li>
-                                        <li>부드러움</li>
-                                        <li>바삭함</li>
-                                        <li>말랑함</li>
-                                        <li>퍽퍽함</li>
-                                        <li>톡터짐</li>
+                                        <li><span>식감:</span>딱딱함</li>
+                                        <li><span>식감:</span>쫀득함</li>
+                                        <li><span>식감:</span>부드러움</li>
+                                        <li><span>식감:</span>바삭함</li>
+                                        <li><span>식감:</span>말랑함</li>
+                                        <li><span>식감:</span>퍽퍽함</li>
+                                        <li><span>식감:</span>톡터짐</li>
                                     </ul>
                                 </div>
                             </li>
@@ -878,63 +879,135 @@
             <div class="slide">
                 <div class="main_slide_box">
                     <div class="main_slide">
-                        <div class="con">
-                            <!-- <div class="brand_box">
-                                <div class="brand_inner">
-                                    <ul class="brandslider">
-                                        <li> -->
-                                            <ul id="scroller1">
-                                                <li><img src="img/brand/14.png" alt=""></li>
-                                                <li><img src="img/brand/15.png" alt=""></li>
-                                                <li><img src="img/brand/16.png" alt=""></li>
-                                                <li><img src="img/brand/17.png" alt=""></li>
-                                            </ul>
-                                        <!-- </li> -->
-        
-                                        <!-- <li>
-                                            <ul id="scroller2">
-                                                <li><img src="img/brand/9.png" alt=""></li>
-                                                <li><img src="img/brand/10.png" alt=""></li>
-                                                <li><img src="img/brand/11.png" alt=""></li>
-                                                <li><img src="img/brand/12.png" alt=""></li>
-                                                <li><img src="img/brand/13.png" alt=""></li>
-                                            </ul>
-                                        </li>
-        
-                                        <li>
-                                            <ul id="scroller3">
-                                                <li><img src="img/brand/4.png" alt=""></li>
-                                                <li><img src="img/brand/5.png" alt=""></li>
-                                                <li><img src="img/brand/6.png" alt=""></li>
-                                                <li><img src="img/brand/7.png" alt=""></li>
-                                                <li><img src="img/brand/8.png" alt=""></li>
-                                            </ul>
-                                        </li>
-        
-                                        <li>
-                                            <ul id="scroller4">
-                                                <li><img src="img/brand/1.png" alt=""></li>
-                                                <li><img src="img/brand/2.png" alt=""></li>
-                                                <li><img src="img/brand/3.png" alt=""></li>
-                                            </ul>
-                                        </li> -->
-                                    <!-- </ul> -->
-                                <!-- </div>
-                            </div> -->
+                        
+                        <div class="swiper-container specialSwiper con">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="first">
+                                        <img src="img/brand/14.png"/>
+                                        <img src="img/brand/15.png"/>
+                                        <img src="img/brand/16.png"/>
+                                        <img src="img/brand/17.png"/>
+                                    </div>
+
+                                    <div class="first">
+                                        <img src="img/brand/14.png"/>
+                                        <img src="img/brand/15.png"/>
+                                        <img src="img/brand/16.png"/>
+                                        <img src="img/brand/17.png"/>
+
+                                        <img src="img/brand/14.png"/>
+                                        <img src="img/brand/15.png"/>
+                                        <img src="img/brand/16.png"/>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+
+                                    <div class="first">
+                                        <img src="img/brand/9.png"/>
+                                        <img src="img/brand/10.png"/>
+                                        <img src="img/brand/11.png"/>
+                                        <img src="img/brand/12.png"/>
+                                        <img src="img/brand/13.png"/>
+                                    </div>
+
+                                    <div class="first">
+                                        <img src="img/brand/9.png"/>
+                                        <img src="img/brand/10.png"/>
+                                        <img src="img/brand/11.png"/>
+                                        <img src="img/brand/12.png"/>
+                                        <img src="img/brand/13.png"/>
+
+                                        <img src="img/brand/9.png"/>
+                                        <img src="img/brand/10.png"/>
+                                        <img src="img/brand/11.png"/>
+                                    </div>
+
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="first">
+                                        <img src="img/brand/4.png"/>
+                                        <img src="img/brand/5.png"/>
+                                        <img src="img/brand/6.png"/>
+                                        <img src="img/brand/7.png"/>
+                                        <img src="img/brand/8.png"/>
+                                    </div>
+
+                                    <div class="first">
+                                        <img src="img/brand/4.png"/>
+                                        <img src="img/brand/5.png"/>
+                                        <img src="img/brand/6.png"/>
+                                        <img src="img/brand/7.png"/>
+                                        <img src="img/brand/8.png"/>
+
+                                        <img src="img/brand/4.png"/>
+                                        <img src="img/brand/5.png"/>
+                                        <img src="img/brand/6.png"/>
+                                    </div>
+
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="first">
+                                        <img src="img/brand/1.png"/>
+                                        <img src="img/brand/2.png"/>
+                                        <img src="img/brand/3.png"/>
+                                    </div>
+
+                                    <div class="first">
+                                        <img src="img/brand/1.png"/>
+                                        <img src="img/brand/2.png"/>
+                                        <img src="img/brand/3.png"/>
+
+                                        <img src="img/brand/1.png"/>
+                                        <img src="img/brand/2.png"/>
+                                        <img src="img/brand/3.png"/>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
                 </div>
 
                 <div class="slide_txt">
-                    <p>사랑과 우정의 메신저 빼빼로</p>
-                    <span>1983년에 발매되어 지금까지 오랜 사랑을 받는 국민 빼빼로 !<br>
-                        달콤한 초콜릿에 다양한 맛과 기분 좋은 식감을 만나보실 수 있습니다. 
-                    </span>
-                    <button>브랜드 보러가기</button>
+                    <ul>
+                        <li class="active">
+                            <p>사랑과 우정의 메신저 빼빼로</p>
+                            <span>1983년에 발매되어 지금까지 오랜 사랑을 받는 국민 빼빼로 !<br>
+                                달콤한 초콜릿에 다양한 맛과 기분 좋은 식감을 만나보실 수 있습니다. 
+                            </span>
+                            <button>브랜드 보러가기</button>
+                        </li>
+
+                        <li>
+                            <p>밥보다 맛있는 퀘이커</p>
+                            <span>오트 식이섬유가 풍부한 140년 전통의 시리얼을 국내 독점 라이선스<br>
+                                생산으로 어디서든지 간편하고 더욱 더 맛있게 즐기실 수 있습니다. 
+                            </span>
+                            <button>브랜드 보러가기</button>
+                        </li>
+
+                        <li>
+                            <p>사랑을 전하는 허쉬</p>
+                            <span>허쉬 컴퍼니의 심플함에 대한 신념은 좋은 재료로 출발하며<br>
+                                부드럽고 깊은 맛을 위하여 인공조미료, 방부제, 감미료등을 일체 사용하지 않습니다.
+                            </span>
+                            <button>브랜드 보러가기</button>
+                        </li>
+
+                        <li>
+                            <p>불멸의 로맨스 길리안</p>
+                            <span>140여개국에서 사랑을 받고 있는 최고의 품질을 고집하는 브랜드로<br>
+                                인생의 가장 달콤함과 즐거움을 줄 수 있는 진정한 프리미엄 초콜릿입니다.
+                            </span>
+                            <button>브랜드 보러가기</button>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="scroll_bar"></div>
+            <div class="scroll_bar">
+                <div class="scroll_bar_status"></div> 
+            </div>
         </div>
     </article>
 

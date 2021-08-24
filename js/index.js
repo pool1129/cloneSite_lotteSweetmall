@@ -1039,66 +1039,59 @@ $('.banner_img').slick({
 });
 
 // TODO : 스페셜영역 슬라이드
-$(function() {  
-    $('#scroller1').simplyScroll({
-    });
-});
 
-$(function() {  
-    $('#scroller2').simplyScroll({
-    });
-});
+var swiper = new Swiper(".specialSwiper", {
+    spaceBetween: 25,
+    effect: "fade",
 
-$(function() {  
-    $('#scroller3').simplyScroll({
-    });
-});
+    on: {
+        slideChange: function () {
+            const slide = document.querySelector('.brand .scroll_bar_status'),
+                  li = document.querySelectorAll('.slide_txt > ul > li');
 
-$(function() {  
-    $('#scroller4').simplyScroll({
-    });
-});
+            for(let i=0; i<li.length; i++){
+                li[i].classList.remove('active');
+            }
+            li[this.realIndex].classList.add('active');
 
-$('.brandslider').slick({
-    dots: true,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    cssEase: 'linear',
+            if(this.realIndex == 0){
+                slide.style.transform = `translateX(0%)`;
+            }else if(this.realIndex == 1){
+                slide.style.transform = `translateX(${100}%)`;
+            }else if(this.realIndex == 2){
+                slide.style.transform = `translateX(${200}%)`;
+            }else if(this.realIndex == 3){
+                slide.style.transform = `translateX(${300}%)`;
+            }
 
-  });
-
-document.addEventListener("DOMContentLoaded",function(){
-    // move();
-    // newSlide();
-    // recipe();
-    // tv();
+        }
+    }
 });
 
 // TODO : 지금 신상 슬라이드 영역 swiper
 var swiper = new Swiper(".newSwiper", {
     slidesPerView: 'auto',
     spaceBetween: 25,
-    freeMode: true,
-    autoplay : { 
-        disableOnInteraction : false,
-    },
+    // freeMode: true,
+    centeredSlides: false,
+    // autoplay : { 
+    //     // stopOnLastSlide : true,
+    //     disableOnInteraction : false,
+    // },
     on: {
         slideChange: function () {
             const newScroll = document.querySelector('#new .new_scroll');
+            if(this.realIndex == 6){
+                this.autoplay.stop();
+            }
 
-            // if(this.realIndex == 2){
-            //     newScroll.style.transform = `translateX(${100}%)`;
-            // }else if(this.realIndex == 4){
-            //     newScroll.style.transform = `translateX(${200}%)`;
-            // }else if(this.realIndex == 6){
-            //     newScroll.style.transform = `translateX(${300}%)`;
-            // }else if(this.realIndex == 8){
-            //     newScroll.style.transform = `translateX(${400}%)`;
-            // }
-            // else if(this.realIndex == 0){
-            //     newScroll.style.transform = `translateX(0%)`;
-            // }
+            if(this.realIndex == 0){
+                newScroll.style.transform = `translateX(0%)`;
+            }else if(this.realIndex == 3){
+                newScroll.style.transform = `translateX(${100}%)`;
+            }else if(this.realIndex == 6){
+                newScroll.style.transform = `translateX(${200}%)`;
+            }
         }
     }
   });
@@ -1208,4 +1201,39 @@ var swiper = new Swiper(".recipeSwiper", {
             }
         }
     }
+});
+
+// TODO : 메인영역 local
+function mainLocal(){
+    const li = document.querySelectorAll('.hash ul li');
+
+    var arr = [];
+    var arr2 = [];
+
+    console.log(li.length); //19
+
+    for(let i=0; i<li.length; i++){
+        li[i].addEventListener('click',function(){
+            // console.log(i);
+            // console.log(li[i].innerHTML);
+
+            arr.push(li[i].innerHTML);
+            arr2.push(i);
+
+            console.log(arr2);
+            console.log(arr);
+
+            localStorage.setItem('main',JSON.stringify(arr)); //로컬스토리지에 넣기
+            localStorage.setItem('mainindex',JSON.stringify(arr2)); //로컬스토리지에 넣기
+        });
+    }
+}
+
+mainLocal();
+
+document.addEventListener("DOMContentLoaded",function(){
+    // move();
+    // newSlide();
+    // recipe();
+    // tv();
 });
