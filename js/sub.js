@@ -478,6 +478,10 @@ function reset(){ //초기화
 
         index = 0;
         localStorage.clear();
+
+        if(sel_option.childElementCount == 0){
+            sel_box.classList.remove('on');
+        }
     });
 }
 
@@ -520,6 +524,10 @@ function del(){
             }
             del();
 
+            if(sel_option.childElementCount == 0){
+                sel_box.classList.remove('on');
+            }
+
             console.log(arr2);
             console.log(arr);
             console.log(sel_option_btn.length);
@@ -560,9 +568,6 @@ function mainSub(){ //메인페이지 선택영역에서 넘어온 친구들
 
         // checkbox 불키기
         for(let j=0; j<index.length; j++){
-            // console.log(index[j]);
-
-            // console.log(optionLi[index[j]]);
 
             optionLi[index[j]].classList.add('on');
         }
