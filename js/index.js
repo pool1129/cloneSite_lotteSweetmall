@@ -1011,10 +1011,26 @@ for(let q = 0; q<mainImg.length; q++){
     colors.push(mainImg[q].color);
 }
 
-$(".slide_inner ul").on("beforeChange", function (){
-    $("main").css("background-color", colors[currentIndex]);
-    currentIndex++;
+// $(".slide_inner ul").on("beforeChange", function (currentSlide){
+
+//     // console.log(currentSlide);
+
+//     $("main").css("background-color", colors[currentIndex]);
+//     currentIndex++;
+
+//     if(currentIndex == mainImg.length){
+//         currentIndex = 0;
+//     }
+// });
+
+$('.slide_inner ul').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+
+    var count = Number($('.slide_inner ul .slick-active').attr('data-slick-index'))+2;
+    // console.log(count);
+
+    $("main").css("background-color", colors[count]);
 });
+
 
 // currentIndex++%colors.length
 
@@ -1026,6 +1042,7 @@ $('.slide_inner ul').slick({
     arrows: true,
     dots: true,
 });
+
 
 //TODO : 미들 배너 슬라이드
 
