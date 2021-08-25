@@ -38,7 +38,7 @@ function scroll(){
     });
 }
 
-scroll();
+// scroll();
 
 // TODO : 상단배너 닫기
 const bannerbtn = document.querySelector('.top_banner .btn'),
@@ -1007,26 +1007,12 @@ var colors = [];
 var currentIndex = 0;
 
 for(let q = 0; q<mainImg.length; q++){
-    // console.log(mainImg[q].color);
     colors.push(mainImg[q].color);
 }
-
-// $(".slide_inner ul").on("beforeChange", function (currentSlide){
-
-//     // console.log(currentSlide);
-
-//     $("main").css("background-color", colors[currentIndex]);
-//     currentIndex++;
-
-//     if(currentIndex == mainImg.length){
-//         currentIndex = 0;
-//     }
-// });
 
 $('.slide_inner ul').on('beforeChange', function(event, slick, currentSlide, nextSlide){
 
     var count = Number($('.slide_inner ul .slick-active').attr('data-slick-index'))+2;
-    // console.log(count);
 
     $("main").css("background-color", colors[count]);
 });
@@ -1042,6 +1028,18 @@ $('.slide_inner ul').slick({
     arrows: true,
     dots: true,
 });
+
+// $(".slide_inner ul").on("beforeChange", function (currentSlide){
+
+//     // console.log(currentSlide);
+
+//     $("main").css("background-color", colors[currentIndex]);
+//     currentIndex++;
+
+//     if(currentIndex == mainImg.length){
+//         currentIndex = 0;
+//     }
+// });
 
 
 //TODO : 미들 배너 슬라이드

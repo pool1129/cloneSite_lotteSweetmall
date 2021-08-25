@@ -24,6 +24,7 @@
 
 body {
   width: 100%;
+  cursor: none;
 }
 
 p, button, a, h1, h2, h3, h4, h5, h6, tr, span, li, div, input, textarea, select, caption, table th, table td, span {
