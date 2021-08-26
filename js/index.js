@@ -38,7 +38,7 @@ function scroll(){
     });
 }
 
-// scroll();
+scroll();
 
 // TODO : 상단배너 닫기
 const bannerbtn = document.querySelector('.top_banner .btn'),
